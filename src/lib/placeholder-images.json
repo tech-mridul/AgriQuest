@@ -1,3 +1,64 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "user-avatar-1",
+      "description": "Avatar for Sarah Jones",
+      "imageUrl": "https://images.unsplash.com/photo-1593351799227-75df2026356b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc1ODU1NDA2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "user-avatar-2",
+      "description": "Avatar for David Lee",
+      "imageUrl": "https://images.unsplash.com/photo-1522556189639-b150ed9c4330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTg1ODI4MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "user-avatar-3",
+      "description": "Avatar for Maria Garcia",
+      "imageUrl": "https://images.unsplash.com/photo-1598625873873-52f9aefd7d9d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3b21hbiUyMHNtaWxpbmd8ZW58MHx8fHwxNzU4NTUwODkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "user-avatar-4",
+      "description": "Avatar for Tom Chen",
+      "imageUrl": "https://images.unsplash.com/photo-1616104164417-1f102e20839f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYW4lMjBmYXJtZXJ8ZW58MHx8fHwxNzU4NjA1NDMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man farmer"
+    },
+    {
+      "id": "user-avatar-main",
+      "description": "Avatar for the main user",
+      "imageUrl": "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwZXJzb24lMjBzbWlsaW5nfGVufDB8fHx8MTc1ODU4MzY2Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person smiling"
+    },
+    {
+      "id": "badge-soil-savior",
+      "description": "Badge for Soil Savior achievement",
+      "imageUrl": "https://images.unsplash.com/photo-1492496913980-501348b61469?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGFuZHN8ZW58MHx8fHwxNzU4NjA0NDYxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "soil hands"
+    },
+    {
+      "id": "badge-water-warrior",
+      "description": "Badge for Water Warrior achievement",
+      "imageUrl": "https://images.unsplash.com/photo-1584982442479-16e4ac81adff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3YXRlciUyMGRyb3B8ZW58MHx8fHwxNzU4NjAzMjM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "water drop"
+    },
+    {
+      "id": "badge-pest-patroller",
+      "description": "Badge for Pest Patroller achievement",
+      "imageUrl": "https://images.unsplash.com/photo-1727387564116-6ef2e94d444c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxsYWR5YnVnJTIwbGVhZnxlbnwwfHx8fDE3NTg2MDU0MzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ladybug leaf"
+    },
+    {
+      "id": "badge-green-guardian",
+      "description": "Badge for Green Guardian achievement",
+      "imageUrl": "https://images.unsplash.com/photo-1551970634-747846a548cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxncmVlbiUyMGxlYWZ8ZW58MHx8fHwxNzU4NjA1NDMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "green leaf"
+    },
+    {
+      "id": "community-post-1",
+      "description": "A field of wheat",
+      "imageUrl": "https://images.unsplash.com/photo-1562956509-4e2fbef3afcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3aGVhdCUyMGZpZWxkfGVufDB8fHx8MTc1ODYwMDI0N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wheat field"
+    }
+  ]
 }
