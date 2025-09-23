@@ -101,11 +101,11 @@ export default function DashboardPage() {
                 <Link href="/missions">View All</Link>
               </Button>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-2">
              {currentMissions.length > 0 ? (
                 currentMissions.map((mission) => (
-                  <div key={mission.id} className="flex items-center space-x-4 p-2 rounded-lg hover:bg-muted">
-                    <div className="p-2 bg-muted rounded-full">
+                  <Link href="/missions" key={mission.id} className="flex items-center space-x-4 p-3 rounded-lg hover:bg-muted transition-all duration-200 transform hover:scale-[1.02]">
+                    <div className="p-3 bg-primary/10 rounded-full">
                        <Sprout className="h-6 w-6 text-primary" />
                     </div>
                     <div className="flex-1">
@@ -113,10 +113,10 @@ export default function DashboardPage() {
                       <p className="text-sm text-muted-foreground">{mission.description}</p>
                     </div>
                     <div className="text-right">
-                       <p className="font-bold text-accent">+{mission.points}pts</p>
+                       <p className="font-bold text-primary">+{mission.points}pts</p>
                     </div>
-                    <ChevronRight className="h-5 w-5 text-muted-foreground"/>
-                  </div>
+                    <ChevronRight className="h-5 w-5 text-muted-foreground transform transition-transform group-hover:translate-x-1"/>
+                  </Link>
                 ))
               ) : (
                 <div className="flex flex-col items-center justify-center text-center p-8 border-2 border-dashed rounded-lg">
@@ -138,10 +138,10 @@ export default function DashboardPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {BADGES.map((badge) => (
-                <div key={badge.id} className="flex flex-col items-center text-center gap-2">
-                  <Avatar className="h-16 w-16 border-2 border-accent">
+                <div key={badge.id} className="flex flex-col items-center text-center gap-2 transition-transform transform hover:scale-110">
+                  <Avatar className="h-16 w-16 border-4 border-accent/50 group-hover:border-accent transition-colors">
                     <AvatarImage data-ai-hint={badge.imageHint} src={badge.icon} alt={badge.name} />
                     <AvatarFallback><Leaf/></AvatarFallback>
                   </Avatar>
@@ -161,12 +161,12 @@ export default function DashboardPage() {
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {EDUCATIONAL_CONTENT.map((content) => (
-              <div key={content.id} className="p-4 border rounded-lg hover:bg-muted transition-colors">
+              <Link href="#" key={content.id} className="block p-4 border rounded-lg hover:bg-muted/50 hover:shadow-md transition-all duration-200 transform hover:-translate-y-1">
                 <Badge variant="secondary" className="mb-2">{content.category}</Badge>
                 <h3 className="font-semibold mb-1">{content.title}</h3>
                 <p className="text-sm text-muted-foreground mb-3">{content.summary}</p>
-                <Button variant="link" className="p-0 h-auto">Read More <ChevronRight className="w-4 h-4 ml-1" /></Button>
-              </div>
+                <Button variant="link" className="p-0 h-auto text-sm group">Read More <ChevronRight className="w-4 h-4 ml-1 transform transition-transform group-hover:translate-x-1" /></Button>
+              </Link>
             ))}
         </CardContent>
       </Card>

@@ -3,8 +3,8 @@ import placeholderJson from './placeholder-images.json';
 
 const images = placeholderJson.placeholderImages;
 
-const findImage = (id: string) => images.find(img => img.id)?.imageUrl || '';
-const findImageHint = (id: string) => images.find(img => img.id)?.imageHint || '';
+const findImage = (id: string) => images.find(img => img.id === id)?.imageUrl || '';
+const findImageHint = (id: string) => images.find(img => img.id === id)?.imageHint || '';
 
 
 export const MISSIONS: Mission[] = [
@@ -115,7 +115,7 @@ export const LEADERBOARD: LeaderboardEntry[] = [
   { rank: 3, farmer: { name: 'Sarah Jones', avatar: 'user-avatar-1' }, score: 7980 },
   { rank: 4, farmer: { name: 'David Lee', avatar: 'user-avatar-2' }, score: 7500 },
   { rank: 5, farmer: { name: 'Tom Chen', avatar: 'user-avatar-4' }, score: 7120 },
-  { rank: 6, farmer: { name: 'Emily White', avatar: 'user-avatar-main' }, score: 6890 },
+  { rank: 6, farmer: { name: 'Emily White', avatar: 'user-avatar-5' }, score: 6890 },
 ];
 
 
