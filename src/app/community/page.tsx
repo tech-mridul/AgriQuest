@@ -1,13 +1,13 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { COMMUNITY_POSTS } from "@/lib/data";
 import placeholderImages from "@/lib/placeholder-images.json";
 import { MessageCircle, ThumbsUp, Image as ImageIcon, Send } from "lucide-react";
 import Image from "next/image";
 
-const findImage = (id: string) => placeholderImages.placeholderImages.find(img => img.id);
+const findImage = (id: string) => placeholderImages.placeholderImages.find(img => img.id === id);
 
 export default function CommunityPage() {
   const mainUserAvatar = findImage('user-avatar-main');

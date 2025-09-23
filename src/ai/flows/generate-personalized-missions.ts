@@ -79,7 +79,7 @@ const prompt = ai.definePrompt({
 
   Based on the farmer's crop, location, and farm size, suggest missions they can complete to improve their sustainability.
 
-  Use the determineSustainablePractices tool to identify appropriate sustainable practices for the farmer.
+  Use the determineSustainablePractices tool to identify appropriate sustainable practices for the farmer, then format those practices into a list of missions.
 
   Crop: {{{crop}}}
   Location: {{{location}}}
@@ -96,12 +96,7 @@ const generatePersonalizedMissionsFlow = ai.defineFlow(
     outputSchema: GeneratePersonalizedMissionsOutputSchema,
   },
   async input => {
-    const sustainablePractices = await determineSustainablePractices(input);
-    const {output} = await prompt({
-      ...input,
-      missions: sustainablePractices,
-    });
-    // Ensure the returned value matches the schema, even though the prompt defines the output schema already.
-    return { missions: sustainablePractices };
+    const {output} = await prompt(input);
+    return output!;
   }
 );

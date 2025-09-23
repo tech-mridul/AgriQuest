@@ -10,7 +10,7 @@ const MissionSchema = z.object({
 });
 
 export async function generateMissionsAction(
-  prevState: { missions: string[]; error: string | null },
+  prevState: any,
   formData: FormData
 ) {
   const validatedFields = MissionSchema.safeParse({
