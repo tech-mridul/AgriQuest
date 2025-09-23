@@ -21,7 +21,7 @@ export type CommunityPost = {
     name: string;
     avatar: string; // image id
   };
-  timestamp: string;
+  timestamp: any; // Can be a string or a Firestore Timestamp
   content: string;
   image?: string; // image id
   likes: number;

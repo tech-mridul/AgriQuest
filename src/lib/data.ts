@@ -1,4 +1,4 @@
-import type { Mission, Badge, CommunityPost, LeaderboardEntry, EducationalContent } from '@/lib/types';
+import type { Mission, Badge, LeaderboardEntry, EducationalContent } from '@/lib/types';
 import placeholderJson from './placeholder-images.json';
 
 const images = placeholderJson.placeholderImages;
@@ -78,34 +78,6 @@ export const BADGES: Badge[] = [
     icon: findImage('badge-green-guardian'),
     imageHint: findImageHint('badge-green-guardian'),
     description: 'Achieved a sustainability score of over 90%.',
-  },
-];
-
-export const COMMUNITY_POSTS: CommunityPost[] = [
-  {
-    id: 'p1',
-    author: { name: 'Sarah Jones', avatar: 'user-avatar-1' },
-    timestamp: '2h ago',
-    content: "Just finished my cover crop mission! Seeing a huge difference in soil moisture already. Clover and rye mix is working wonders.",
-    image: 'community-post-1',
-    likes: 42,
-    comments: 8,
-  },
-  {
-    id: 'p2',
-    author: { name: 'David Lee', avatar: 'user-avatar-2' },
-    timestamp: '1d ago',
-    content: "Any tips for dealing with aphids on corn without heavy pesticides? I'm trying to complete the IPM quests.",
-    likes: 15,
-    comments: 12,
-  },
-  {
-    id: 'p3',
-    author: { name: 'Maria Garcia', avatar: 'user-avatar-3' },
-    timestamp: '3d ago',
-    content: "The real-time rewards system is so motivating! Just cashed in some points for a soil testing kit. #AgriQuest",
-    likes: 88,
-    comments: 21,
   },
 ];
 
