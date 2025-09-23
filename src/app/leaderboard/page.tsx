@@ -1,12 +1,11 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { LEADERBOARD } from "@/lib/data";
 import placeholderImages from "@/lib/placeholder-images.json";
 import { Trophy } from "lucide-react";
 
-const findImage = (id: string) => placeholderImages.placeholderImages.find(img => img.id);
+const findImage = (id: string) => placeholderImages.placeholderImages.find(img => img.id === id);
 
 export default function LeaderboardPage() {
   const getRankBadge = (rank: number) => {

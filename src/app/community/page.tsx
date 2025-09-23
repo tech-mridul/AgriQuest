@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { COMMUNITY_POSTS } from "@/lib/data";
+import { COMMUNITY_POSTS, LEADERBOARD } from "@/lib/data";
 import placeholderImages from "@/lib/placeholder-images.json";
 import { MessageCircle, ThumbsUp, Image as ImageIcon, Send, Hash } from "lucide-react";
 import Image from "next/image";
