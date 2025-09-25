@@ -27,24 +27,26 @@ export default function RootLayout({
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
         <SidebarProvider>
-          <Sidebar collapsible="icon">
-            <SidebarHeader>
-              <Link href="/" className="flex items-center gap-2 text-sidebar-foreground">
-                <Icons.logo className="size-8" />
-                <span className="text-lg font-bold group-data-[collapsible=icon]:hidden">AgriQuest</span>
-              </Link>
-            </SidebarHeader>
-            <SidebarContent>
-              <MainNav />
-            </SidebarContent>
-            <SidebarFooter>
-              <UserNav />
-            </SidebarFooter>
-          </Sidebar>
-          <SidebarInset className="flex flex-col">
-            {children}
-            <Toaster />
-          </SidebarInset>
+          <div className="flex">
+            <Sidebar collapsible="icon">
+              <SidebarHeader>
+                <Link href="/" className="flex items-center gap-2 text-sidebar-foreground">
+                  <Icons.logo className="size-8" />
+                  <span className="text-lg font-bold group-data-[collapsible=icon]:hidden">AgriQuest</span>
+                </Link>
+              </SidebarHeader>
+              <SidebarContent>
+                <MainNav />
+              </SidebarContent>
+              <SidebarFooter>
+                <UserNav />
+              </SidebarFooter>
+            </Sidebar>
+            <SidebarInset className="flex flex-col flex-1">
+              {children}
+              <Toaster />
+            </SidebarInset>
+          </div>
         </SidebarProvider>
       </body>
     </html>

@@ -9,11 +9,28 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, Settings, User } from "lucide-react";
+import { LogIn, LogOut, Settings, User } from "lucide-react";
 import placeholderImages from "@/lib/placeholder-images.json";
+import Link from "next/link";
+
+// This is a placeholder. In a real app, you'd get this from your auth state.
+const isAuthenticated = false; 
 
 export function UserNav() {
     const userAvatar = placeholderImages.placeholderImages.find(img => img.id === 'user-avatar-main');
+
+  if (!isAuthenticated) {
+    return (
+        <div className="p-2 w-full group-data-[collapsible=icon]:p-0">
+             <Button asChild className="w-full justify-start group-data-[collapsible=icon]:w-auto group-data-[collapsible=icon]:justify-center">
+                <Link href="/login">
+                    <LogIn className="mr-2"/>
+                    <span className="group-data-[collapsible=icon]:hidden">Log In</span>
+                </Link>
+            </Button>
+        </div>
+    )
+  }
 
   return (
     <div className="group-data-[collapsible=icon]:p-2">
