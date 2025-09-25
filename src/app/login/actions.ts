@@ -106,9 +106,3 @@ export async function signup(prevState: any, formData: FormData) {
     return { error: errorMessage, success: false };
   }
 }
-
-export async function logout() {
-    // In a real app, you'd call Firebase's signOut method.
-    // For this prototype, we'll just redirect.
-    redirect('/login');
-}

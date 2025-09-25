@@ -1,4 +1,6 @@
 
+'use client';
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,17 +12,39 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { logout } from "@/app/login/actions";
+import { auth } from "@/lib/firebase";
+import { signOut } from "firebase/auth";
 import { LogIn, LogOut, Settings, User } from "lucide-react";
 import placeholderImages from "@/lib/placeholder-images.json";
 import Link from "next/link";
-import { Form } from "./ui/form";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 // This is a placeholder. In a real app, you'd get this from your auth state.
 const isAuthenticated = true; 
 
 export function UserNav() {
     const userAvatar = placeholderImages.placeholderImages.find(img => img.id === 'user-avatar-main');
+    const router = useRouter();
+    const { toast } = useToast();
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            toast({
+                title: "Logged Out",
+                description: "You have been successfully logged out.",
+            });
+            router.push('/login');
+        } catch (error) {
+             toast({
+                variant: 'destructive',
+                title: "Logout Failed",
+                description: "Could not log you out. Please try again.",
+            });
+            console.error("Logout error:", error);
+        }
+    };
 
   if (!isAuthenticated) {
     return (
@@ -73,14 +97,10 @@ export function UserNav() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-           <form action={logout}>
-              <DropdownMenuItem asChild>
-                <button type="submit" className="w-full">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
-                </button>
-              </DropdownMenuItem>
-            </form>
+            <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>Log out</span>
+            </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
