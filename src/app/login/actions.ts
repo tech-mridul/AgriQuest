@@ -67,11 +67,15 @@ export async function signup(prevState: any, formData: FormData) {
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
+  const confirmPassword = formData.get('confirmPassword') as string;
 
    try {
     z.string().min(2, { message: 'Name is required.' }).parse(name);
     emailSchema.parse(email);
     passwordSchema.parse(password);
+    if (password !== confirmPassword) {
+      return { error: 'Passwords do not match.', success: false };
+    }
   } catch (e: any) {
     return { error: e.errors[0].message, success: false };
   }
