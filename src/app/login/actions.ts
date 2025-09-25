@@ -18,7 +18,16 @@ const firebaseConfig = {
 
 // Initialize Firebase for server-side actions
 function getFirebaseApp() {
-    return !getApps().length ? initializeApp(firebaseConfig) : getApp();
+    if (getApps().length > 0) {
+        return getApp();
+    }
+    
+    // Validate the config object to make sure it's not missing any values.
+    if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
+        throw new Error('Missing Firebase config values. Please check your .env file.');
+    }
+    
+    return initializeApp(firebaseConfig);
 }
 
 const emailSchema = z.string().email({ message: 'Invalid email address.' });
@@ -41,8 +50,11 @@ export async function login(prevState: any, formData: FormData) {
     const auth = getAuth(app);
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error: any) {
-    let errorMessage = error.message;
-    if (error.code === 'auth/invalid-credential') {
+    let errorMessage = "An unexpected error occurred. Please try again.";
+    if (error instanceof Error) {
+        errorMessage = error.message;
+    }
+    if ((error as any).code === 'auth/invalid-credential' || (error as any).code === 'auth/user-not-found' || (error as any).code === 'auth/wrong-password') {
         errorMessage = "Invalid login credentials. Please check your email and password.";
     }
     return { error: errorMessage, success: false };
@@ -84,6 +96,19 @@ export async function signup(prevState: any, formData: FormData) {
     return { error: null, success: true };
 
   } catch (error: any) {
-    return { error: error.message, success: false };
+     let errorMessage = "An unexpected error occurred. Please try again.";
+    if (error instanceof Error) {
+        errorMessage = error.message;
+    }
+    if ((error as any).code === 'auth/email-already-in-use') {
+        errorMessage = 'This email address is already in use. Please log in or use a different email.';
+    }
+    return { error: errorMessage, success: false };
   }
+}
+
+export async function logout() {
+    // In a real app, you'd call Firebase's signOut method.
+    // For this prototype, we'll just redirect.
+    redirect('/login');
 }

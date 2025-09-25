@@ -1,3 +1,4 @@
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,12 +10,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { logout } from "@/app/login/actions";
 import { LogIn, LogOut, Settings, User } from "lucide-react";
 import placeholderImages from "@/lib/placeholder-images.json";
 import Link from "next/link";
+import { Form } from "./ui/form";
 
 // This is a placeholder. In a real app, you'd get this from your auth state.
-const isAuthenticated = false; 
+const isAuthenticated = true; 
 
 export function UserNav() {
     const userAvatar = placeholderImages.placeholderImages.find(img => img.id === 'user-avatar-main');
@@ -58,9 +61,11 @@ export function UserNav() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <User className="mr-2 h-4 w-4" />
-              <span>Profile</span>
+            <DropdownMenuItem asChild>
+                <Link href="/profile">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Settings className="mr-2 h-4 w-4" />
@@ -68,10 +73,14 @@ export function UserNav() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <LogOut className="mr-2 h-4 w-4" />
-            <span>Log out</span>
-          </DropdownMenuItem>
+           <form action={logout}>
+              <DropdownMenuItem asChild>
+                <button type="submit" className="w-full">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </button>
+              </DropdownMenuItem>
+            </form>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
