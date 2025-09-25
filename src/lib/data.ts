@@ -14,7 +14,7 @@ export const MISSIONS: Mission[] = [
     description: 'Reduce soil erosion by implementing no-till practices on a 10-acre plot.',
     points: 150,
     category: 'Soil Health',
-    isCompleted: true,
+    isCompleted: false,
   },
   {
     id: 'm2',
@@ -22,7 +22,7 @@ export const MISSIONS: Mission[] = [
     description: 'Install a drip irrigation system to conserve water in your main field.',
     points: 200,
     category: 'Water Conservation',
-    isCompleted: true,
+    isCompleted: false,
   },
   {
     id: 'm3',
