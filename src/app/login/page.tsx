@@ -14,6 +14,8 @@ import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { auth } from '@/lib/firebase';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const initialState = {
   error: null,
@@ -35,6 +37,23 @@ export default function LoginPage() {
   const [loginState, loginAction] = useActionState(login, initialState);
   const [signupState, signupAction] = useActionState(signup, initialState);
   const { toast } = useToast();
+
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      // On successful sign-in, Firebase will handle the user's session.
+      // We can redirect the user to the main page.
+      window.location.href = '/';
+    } catch (error) {
+      console.error("Google Sign-In Error:", error);
+      toast({
+        variant: 'destructive',
+        title: 'Google Sign-In Failed',
+        description: 'An error occurred during Google Sign-In. Please try again.',
+      });
+    }
+  };
 
   useEffect(() => {
     if (loginState?.error) {
@@ -105,8 +124,24 @@ export default function LoginPage() {
                 <CardTitle>Create an Account</CardTitle>
                 <CardDescription>Join the sustainable farming revolution!</CardDescription>
               </CardHeader>
+              <CardContent>
+                <Button variant="outline" className="w-full" type="button" onClick={handleGoogleSignIn}>
+                  <Icons.google className="mr-2 h-4 w-4" />
+                  Sign up with Google
+                </Button>
+                <div className="relative my-4">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background px-2 text-muted-foreground">
+                      Or continue with
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
               <form action={signupAction}>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 pt-0">
                   <div className="space-y-2">
                     <Label htmlFor="name-signup">Name</Label>
                     <Input id="name-signup" name="name" placeholder="John Smith" required />
@@ -118,6 +153,10 @@ export default function LoginPage() {
                   <div className="space-y-2">
                     <Label htmlFor="password-signup">Password</Label>
                     <Input id="password-signup" name="password" type="password" required />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="confirm-password-signup">Confirm Password</Label>
+                    <Input id="confirm-password-signup" name="confirmPassword" type="password" required />
                   </div>
                 </CardContent>
                 <CardFooter>
