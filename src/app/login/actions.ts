@@ -10,7 +10,10 @@ import { z } from 'zod';
 const emailSchema = z.string().email({ message: 'Invalid email address.' });
 const passwordSchema = z.string().min(6, { message: 'Password must be at least 6 characters long.' });
 
-const auth = getAuth(app);
+// Initialize auth here to ensure it's available in the server action context
+function getAuthInstance() {
+    return getAuth(app);
+}
 
 export async function login(prevState: any, formData: FormData) {
   const email = formData.get('email') as string;
@@ -24,9 +27,14 @@ export async function login(prevState: any, formData: FormData) {
   }
   
   try {
+    const auth = getAuthInstance();
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error: any) {
-    return { error: error.message, success: false };
+    let errorMessage = error.message;
+    if (error.code === 'auth/invalid-credential') {
+        errorMessage = "Invalid login credentials. Please check your email and password.";
+    }
+    return { error: errorMessage, success: false };
   }
 
   return redirect('/');
@@ -46,6 +54,7 @@ export async function signup(prevState: any, formData: FormData) {
   }
 
   try {
+    const auth = getAuthInstance();
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
