@@ -61,7 +61,24 @@ const generatePersonalizedMissionsFlow = ai.defineFlow(
     outputSchema: GeneratePersonalizedMissionsOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    try {
+      const {output} = await prompt(input);
+      return output!;
+    } catch (error) {
+      console.error('AI generation failed, using fallback missions. Error:', error);
+      const missions = buildFallbackMissions(input.crop, input.location, input.farmSize);
+      return { missions };
+    }
   }
 );
+
+function buildFallbackMissions(crop: string, location: string, farmSize: string): string[] {
+  const cropTitle = crop?.trim() || 'Your Crop';
+  const locTitle = location?.trim() || 'Your Area';
+  const sizeTitle = farmSize?.trim() || 'your farm';
+  return [
+    `Start a Soil Health Sprint in ${locTitle}`,
+    `Boost ${cropTitle} Yields with Smart Irrigation (${sizeTitle})`,
+    `Adopt Integrated Pest Scouts for ${cropTitle}`,
+  ];
+}

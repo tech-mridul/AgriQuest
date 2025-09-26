@@ -1,6 +1,6 @@
 'use server';
 
-import {firestore} from '@/lib/firebase';
+import { getServerFirestore } from '@/lib/firebaseServer';
 import {addDoc, collection, serverTimestamp} from 'firebase/firestore';
 
 export async function addPost(content: string, authorName: string, authorAvatar: string) {
@@ -9,6 +9,7 @@ export async function addPost(content: string, authorName: string, authorAvatar:
   }
 
   try {
+    const firestore = getServerFirestore();
     await addDoc(collection(firestore, 'community-posts'), {
       author: {
         name: authorName,
